@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-bg text-textMain font-body antialiased selection:bg-brand selection:text-white;
+  }
+}
+
+/* Custom styles for Cassie theme feel */
+.section-wrap {
+  @apply max-w-5xl mx-auto px-6 py-24;
+}
+
+.section-title {
+  @apply font-heading text-4xl md:text-5xl font-bold mb-12 flex items-center gap-4;
+}
+
+.blink {
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}

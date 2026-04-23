@@ -3,169 +3,68 @@ import { projects } from "../data";
 
 export default function Projects() {
   return (
-    <section id="projects" className="section-wrap">
+    <section id="projects" className="py-24 bg-bg2 relative">
+      <div className="max-w-5xl mx-auto px-6">
+        
+        <motion.h2 
+          className="text-white font-heading text-5xl font-extrabold mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          Selected Projects.
+        </motion.h2>
 
-      <h2 className="section-title fade-in">
-        Projects<span>.</span>
-      </h2>
-
-      <p className="fade-in" style={{
-        color: "var(--muted)",
-        fontFamily: "'Fira Code', monospace",
-        fontSize: 13,
-        marginTop: -38,
-        marginBottom: 48,
-      }}>
-        // Real projects. Real code. All on GitHub.
-      </p>
-
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(310px, 1fr))",
-        gap: 24,
-      }}>
-        {projects.map((p, i) => (
-          <motion.div
-            key={p.name}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, delay: i * 0.12 }}
-          >
-            <div
-              data-hover
-              style={{
-                background: "var(--bg2)",
-                border: "1px solid var(--border)",
-                borderRadius: 14,
-                padding: "30px 26px",
-                height: "100%",
-                position: "relative",
-                overflow: "hidden",
-                transition: "border-color .4s, transform .3s",
-                display: "flex",
-                flexDirection: "column",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = "var(--teal)";
-                e.currentTarget.style.transform = "translateY(-7px)";
-                e.currentTarget.querySelector(".topbar").style.transform = "scaleX(1)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "var(--border)";
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.querySelector(".topbar").style.transform = "scaleX(0)";
-              }}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((p, i) => (
+            <motion.div
+              key={p.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="bg-bg rounded-2xl p-8 border border-white/10 hover:border-brand/40 transition-all group flex flex-col h-full hover:shadow-[0_8px_30px_rgb(235,78,132,0.12)] relative overflow-hidden"
             >
-              <div
-                className="topbar"
-                style={{
-                  position: "absolute",
-                  top: 0, left: 0, right: 0,
-                  height: 2,
-                  background: "var(--teal)",
-                  transform: "scaleX(0)",
-                  transformOrigin: "left",
-                  transition: "transform .4s ease",
-                }}
-              />
-
-              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
-                <span style={{
-                  fontFamily: "'Fira Code', monospace",
-                  color: "var(--teal)",
-                  fontSize: 12,
-                  opacity: 0.65,
-                }}>
-                  {p.number}
-                </span>
-                <span style={{
-                  fontFamily: "'Fira Code', monospace",
-                  color: "var(--muted)",
-                  fontSize: 12,
-                }}>
-                  / {p.category}
-                </span>
+              {/* Window controls decoration like cassie.codes */}
+              <div className="flex gap-2 mb-6 absolute top-6 left-6">
+                 <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                 <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
+                 <div className="w-2.5 h-2.5 rounded-full bg-white/20" />
               </div>
 
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
-                <i className={p.icon} style={{ fontSize: 22, color: "var(--teal)" }} />
-                <h3 style={{ fontSize: 20, fontWeight: 700 }}>{p.name}</h3>
-              </div>
-
-              <p style={{
-                color: "var(--muted)",
-                fontSize: 13,
-                lineHeight: 1.75,
-                marginBottom: 14,
-                flex: 1,
-              }}>
-                {p.description}
-              </p>
-
-              <div style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: 8,
-                background: "var(--teal-dim)",
-                border: "1px solid rgba(45,226,194,.15)",
-                borderRadius: 6,
-                padding: "8px 12px",
-                marginBottom: 18,
-              }}>
-                <i className="fi fi-rr-lightbulb" style={{ color: "var(--teal)", fontSize: 13, marginTop: 2 }} />
-                <p style={{
-                  fontFamily: "'Fira Code', monospace",
-                  color: "var(--teal)",
-                  fontSize: 11,
-                  lineHeight: 1.6,
-                }}>
-                  {p.impact}
+              <div className="mt-6 flex-1">
+                <h3 className="text-2xl font-heading font-bold text-white mb-2">{p.name}</h3>
+                <div className="text-brand text-xs font-body font-semibold tracking-wider uppercase mb-4">
+                  {p.category}
+                </div>
+                <p className="text-textMuted font-body text-sm leading-relaxed mb-6">
+                  {p.description}
                 </p>
+                
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {p.tech.map(t => (
+                    <span key={t} className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs text-white/80 font-body">
+                      {t}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 7, marginBottom: 20 }}>
-                {p.tech.map((t) => (
-                  <span key={t} style={{
-                    background: "#141d2e",
-                    color: "var(--teal)",
-                    border: "1px solid rgba(45,226,194,.25)",
-                    borderRadius: 4,
-                    padding: "3px 10px",
-                    fontSize: 11,
-                    fontFamily: "'Fira Code', monospace",
-                  }}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              
-                href={p.github}
-                target="_blank"
+              <a 
+                href={p.github} 
+                target="_blank" 
                 rel="noreferrer"
-                data-hover
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 7,
-                  color: "var(--muted)",
-                  fontSize: 12,
-                  fontFamily: "'Fira Code', monospace",
-                  textDecoration: "none",
-                  transition: "color .3s",
-                  marginTop: "auto",
-                }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--teal)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
+                className="inline-flex items-center gap-2 text-white font-body text-sm font-semibold hover:text-brand transition-colors mt-auto w-fit"
               >
-                <i className="fi fi-brands-github" style={{ fontSize: 14 }} />
                 View on GitHub
-                <i className="fi fi-rr-arrow-up-right" style={{ fontSize: 11 }} />
+                <svg className="w-4 h-4 transform group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
               </a>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
