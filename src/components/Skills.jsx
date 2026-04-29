@@ -8,7 +8,7 @@ const skillsData = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-24 bg-bg3 relative border-y border-white/5">
+    <section id="skills" className="py-24 bg-bg relative">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
            initial={{ opacity: 0, scale: 0.9 }}
@@ -17,10 +17,12 @@ export default function Skills() {
            transition={{ duration: 0.5 }}
            className="text-center mb-16"
         >
-          <h2 className="text-white font-heading text-4xl md:text-5xl font-extrabold flex items-center justify-center gap-4">
-            <i className="fi fi-rr-settings text-brand text-3xl" />
-            Skills & Tools.
+          <h2 className="text-white font-heading text-4xl md:text-5xl font-extrabold mb-4">
+            Skills
           </h2>
+          <p className="text-textMuted font-body text-lg">
+            Crafting seamless UI/UX and clean code
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -31,19 +33,18 @@ export default function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: idx * 0.15 }}
-              className="bg-bg2/50 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-brand/40 transition-colors"
+              className="bg-[#111111] rounded-2xl p-8 border border-white/5 hover:border-white/20 transition-all hover:scale-[1.02]"
             >
-              <h3 className="text-xl font-heading font-bold text-white mb-6 border-b border-white/10 pb-4">
+              <h3 className="text-xl font-heading font-bold text-white mb-6">
                 {group.category}
               </h3>
-              <ul className="space-y-4">
+              <div className="flex flex-wrap gap-3">
                 {group.items.map((skill) => (
-                  <li key={skill} className="flex items-center gap-3 text-white/80 font-body">
-                    <div className="w-1.5 h-1.5 rounded-full bg-brand" />
+                  <span key={skill} className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-white/80 font-body">
                     {skill}
-                  </li>
+                  </span>
                 ))}
-              </ul>
+              </div>
             </motion.div>
           ))}
         </div>

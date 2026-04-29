@@ -7,17 +7,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bg: "#2A222C",        // Cassie top dark
-        bg2: "#4F3D58",       // Cassie purple section
-        bg3: "#2F2833",       // Cassie alternate dark
-        brand: "#EB4E84",     // Cassie pink button accent
-        "brand-hover": "#D8346A",
-        textMain: "#FDFDFD",
-        textMuted: "#B8B1BA", // Lighter text for secondary
+        bg: "#0A0A0A",        
+        bg2: "#141414",       
+        bg3: "#1A1A1A",       
+        brand: "#FFFFFF",     
+        "brand-hover": "#CCCCCC",
+        textMain: "#FFFFFF",
+        textMuted: "#A3A3A3", 
       },
       fontFamily: {
         body: ['Inter', 'sans-serif'],
-        heading: ['Poppins', 'sans-serif'],
+        heading: ['Inter', 'sans-serif'],
       }
     },
   },
